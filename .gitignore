@@ -1,0 +1,8 @@
+# Логи локального запуска
+flask.log
+flask.err
+
+# Временные файлы
+*.pyc
+__pycache__/
+.venv/

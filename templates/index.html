@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Психологический старт — найди первый материал за 5 минут</title>
+  <meta name="description" content="Дайджест для новичков: тревога, стресс, выгорание. Девять проверенных материалов, живой поиск и фильтры по тегам.">
+
+  <!-- Шрифт Inter (переменные веса) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <!-- ===== HERO: тёмный сине-зелёный блок ===== -->
+  <header class="hero">
+    <div class="hero__inner">
+      <p class="hero__eyebrow reveal" style="--d: 0">
+        дайджест для тех, кто начинает <span class="hero__dot" aria-hidden="true"></span> 9 материалов
+      </p>
+
+      <h1 class="hero__title reveal" style="--d: 1">
+        <span class="hero__line">Психологический</span>
+        <span class="hero__line hero__line--accent">старт</span>
+      </h1>
+
+      <p class="hero__lead reveal" style="--d: 2">
+        Впервые ищете ответ на тревогу, стресс или выгорание? Мы собрали
+        девять сильных материалов так, чтобы вы нашли свой первый
+        за&nbsp;5&nbsp;минут&nbsp;— а&nbsp;не&nbsp;утонули в&nbsp;статьях.
+      </p>
+
+      <div class="hero__actions reveal" style="--d: 3">
+        <a class="btn btn--amber" href="#podbor">Собрать свой старт</a>
+        <span class="hero__hint">Поиск и фильтры — прямо под&nbsp;героем</span>
+      </div>
+    </div>
+
+    <!-- типографская «лесенка»: цифры вместо иконок -->
+    <div class="hero__stats reveal" style="--d: 4" aria-hidden="true">
+      <span class="hero__stat">05<small>минут</small></span>
+      <span class="hero__stat">09<small>материалов</small></span>
+      <span class="hero__stat">00<small>лишнего</small></span>
+    </div>
+  </header>
+
+  <!-- ===== ОСНОВНОЕ СОДЕРЖИМОЕ ===== -->
+  <main class="main" id="podbor">
+    <div class="wrap">
+
+      <!-- Панель управления: поиск + лента тегов -->
+      <section class="controls" aria-label="Поиск и фильтры">
+        <div class="search">
+          <label class="search__label" for="searchInput">Найти материал</label>
+          <div class="search__field">
+            <input
+              id="searchInput"
+              class="search__input"
+              type="search"
+              placeholder="Например: тревога перед сном"
+              autocomplete="off"
+            >
+            <span class="search__pulse" aria-hidden="true"></span>
+          </div>
+        </div>
+
+        <!-- Горизонтальная лента тегов-чипов -->
+        <div class="tags" id="tagsBar" role="group" aria-label="Фильтр по тегам"></div>
+
+        <!-- Счётчик результатов: микро-реакция на поиск -->
+        <p class="counter" id="counter" aria-live="polite">Показано 9 из 9</p>
+      </section>
+
+      <!-- Сетка карточек: 3 колонки → 2 → 1 -->
+      <section class="grid" id="cardsGrid" aria-label="Материалы"></section>
+
+      <!-- Пустое состояние -->
+      <section class="empty" id="emptyState" hidden>
+        <div class="empty__card">
+          <p class="empty__kicker">Тишина</p>
+          <h2 class="empty__title">Похоже, таких материалов нет</h2>
+          <p class="empty__text">
+            Попробуйте другое слово в поиске или снимите часть&nbsp;тегов.
+            Иногда помогает просто начать с&nbsp;любой карточки&nbsp;— все они
+            короткие и&nbsp;по&nbsp;делу.
+          </p>
+          <button class="btn btn--amber" id="resetFilters" type="button">
+            Сбросить фильтры
+          </button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <p class="footer__note">
+        Психологический старт — вводный дайджест. Это не&nbsp;замена
+        консультации со&nbsp;специалистом.
+      </p>
+      <a class="footer__top" href="#">Наверх ↑</a>
+    </div>
+  </footer>
+
+  <!-- Шаблон карточки: JS клонирует его для каждой записи -->
+  <template id="cardTemplate">
+    <article class="card">
+      <div class="card__num" aria-hidden="true"></div>
+      <div class="card__body">
+        <p class="card__kicker">о&nbsp;чём и когда читать</p>
+        <h3 class="card__title"></h3>
+        <p class="card__text"></p>
+        <ul class="card__tags"></ul>
+      </div>
+      <a class="btn btn--amber card__btn" target="_blank" rel="noopener noreferrer">
+        Открыть материал
+        <span aria-hidden="true">↗</span>
+      </a>
+    </article>
+  </template>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
